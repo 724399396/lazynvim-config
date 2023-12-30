@@ -6,7 +6,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
       { "<leader>cc", "<cmd>FlutterRun<cr>", "Flutter Run" },
-      { "<leader>cr", "<cmd>FlutterReload<cr>", "Flutter Hot Reload" },
       { "<leader>cR", "<cmd>FlutterRestart<cr>", "Flutter Hot Restart" },
     },
     opts = {
