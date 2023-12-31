@@ -5,7 +5,6 @@ return {
     event = { "BufRead pubspec.yaml" },
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      { "<leader>cc", "<cmd>FlutterRun<cr>", "Flutter Run" },
       { "<leader>cR", "<cmd>FlutterRestart<cr>", "Flutter Hot Restart" },
     },
     opts = {
@@ -19,5 +18,28 @@ return {
       dev_log = { enabled = false, open_cmd = "tabedit" },
       fvm = true,
     },
+    lsp = {
+      color = {
+        enabled = true,
+        background = true,
+        virtual_text = false,
+      },
+      settings = {
+        showTodos = true,
+        renameFilesWithClasses = "prompt",
+        enableSnippets = true,
+        analysisExcludedFolders = {
+          vim.fn.expand("$HOME/.pub-cache"),
+          vim.fn.expand("$HOME/fvm"),
+        },
+      },
+    },
+  },
+  {
+    "rafamadriz/friendly-snippets",
+    opts = function(_, _)
+      local luasnip = require("luasnip")
+      luasnip.filetype_extend("dart", { "flutter" })
+    end,
   },
 }
