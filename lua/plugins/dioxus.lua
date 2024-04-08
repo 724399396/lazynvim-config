@@ -20,4 +20,22 @@ return {
       },
     },
   },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      log_level = vim.log.levels.TRACE,
+      formatters_by_ft = {
+        rust = { "dioxus" },
+      },
+      formatters = {
+        dioxus = {
+          command = "/home/weili/.cargo/bin/dx",
+          args = { "fmt", "--file", "$FILENAME" },
+          stdin = false,
+          cwd = require("conform.util").root_file({ "Dioxus.toml" }),
+          require_cwd = true,
+        },
+      },
+    },
+  },
 }
