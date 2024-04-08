@@ -23,7 +23,6 @@ return {
   {
     "stevearc/conform.nvim",
     opts = {
-      log_level = vim.log.levels.TRACE,
       formatters_by_ft = {
         rust = { "dioxus" },
       },
