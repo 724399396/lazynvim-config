@@ -35,11 +35,4 @@ return {
       },
     },
   },
-  {
-    "rafamadriz/friendly-snippets",
-    opts = function(_, _)
-      local luasnip = require("luasnip")
-      luasnip.filetype_extend("dart", { "flutter" })
-    end,
-  },
 }
