@@ -1,29 +1,5 @@
 return {
   {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        volar = {
-          init_options = {
-            vue = {
-              hybridMode = false,
-            },
-          },
-          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-        },
-        cssls = {},
-      },
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "vue" })
-      end
-    end,
-  },
-  {
     "mfussenegger/nvim-dap",
     optional = true,
     ft = { "vue" },
