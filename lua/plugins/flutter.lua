@@ -5,7 +5,7 @@ return {
     event = { "BufRead pubspec.yaml" },
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      { "<leader>cR", "<cmd>FlutterRestart<cr>", "Flutter Hot Restart" },
+      { "<leader>dR", "<cmd>FlutterRestart<cr>", "Flutter Hot Restart" },
     },
     opts = {
       debugger = {
