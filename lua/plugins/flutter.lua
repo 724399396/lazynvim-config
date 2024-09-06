@@ -5,7 +5,8 @@ return {
     event = { "BufRead pubspec.yaml" },
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      { "<leader>dR", "<cmd>FlutterRestart<cr>", "Flutter Hot Restart" },
+      { "<leader>df", "<cmd>FlutterRun<cr>", "Flutter Run" },
+      { "<leader>dF", "<cmd>FlutterRestart<cr>", "Flutter Hot Restart" },
     },
     opts = {
       debugger = {
@@ -34,5 +35,9 @@ return {
         },
       },
     },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = { ensure_installed = { "dart" } },
   },
 }
