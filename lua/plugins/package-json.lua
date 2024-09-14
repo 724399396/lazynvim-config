@@ -25,5 +25,12 @@ return {
       end,
       desc = "Change package version",
     },
+    {
+      "<leader>cpi",
+      function()
+        require("package-info").install()
+      end,
+      desc = "Install package",
+    },
   },
 }
