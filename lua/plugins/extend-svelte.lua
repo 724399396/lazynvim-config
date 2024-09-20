@@ -27,7 +27,7 @@ return {
           },
         }
       end
-      dap.configurations["vue"] = {
+      dap.configurations["svelte"] = {
         {
           -- use nvim-dap-vscode-js's pwa-chrome debug adapter
           type = "pwa-chrome",
@@ -42,39 +42,10 @@ return {
           protocol = "inspector",
           port = 9222,
           runtimeExecutable = "/usr/bin/chromium",
-          -- -- skip files from vite's hmr
+          -- skip files from vite's hmr
           skipFiles = { "**/node_modules/**/*", "**/@vite/*", "**/src/client/*", "**/src/*" },
         },
       }
     end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        volar = {
-          settings = {
-            css = {
-              validate = true,
-              lint = {
-                unknownAtRules = "ignore",
-              },
-            },
-            scss = {
-              validate = true,
-              lint = {
-                unknownAtRules = "ignore",
-              },
-            },
-            less = {
-              validate = true,
-              lint = {
-                unknownAtRules = "ignore",
-              },
-            },
-          },
-        },
-      },
-    },
   },
 }
