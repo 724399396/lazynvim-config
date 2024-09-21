@@ -44,6 +44,24 @@ return {
           runtimeExecutable = "/usr/bin/chromium",
           -- skip files from vite's hmr
           skipFiles = { "**/node_modules/**/*", "**/@vite/*", "**/src/client/*", "**/src/*" },
+          userDataDir = false,
+        },
+        {
+          -- use nvim-dap-vscode-js's pwa-chrome debug adapter
+          type = "pwa-chrome",
+          request = "attach",
+          -- name of the debug action
+          name = "Attach to Running Chrome",
+          -- default vite dev server url
+          url = "http://localhost:5173",
+          -- for TypeScript/Svelte
+          sourceMaps = true,
+          webRoot = "${workspaceFolder}/src",
+          protocol = "inspector",
+          port = 9222,
+          -- -- skip files from vite's hmr
+          skipFiles = { "**/node_modules/**/*", "**/@vite/*", "**/src/client/*", "**/src/*" },
+          userDataDir = false,
         },
       }
     end,
