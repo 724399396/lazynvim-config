@@ -92,6 +92,15 @@ return {
             },
           },
         },
+        vtsls = {
+          settings = {
+            typescript = {
+              tsserver = {
+                maxTsServerMemory = 16192,
+              },
+            },
+          },
+        },
       },
     },
   },
