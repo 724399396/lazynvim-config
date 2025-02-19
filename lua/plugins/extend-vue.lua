@@ -1,3 +1,5 @@
+local js_based_languages = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
+
 return {
   {
     "mfussenegger/nvim-dap",
@@ -64,6 +66,19 @@ return {
           userDataDir = false,
         },
       }
+
+      for _, language in ipairs(js_based_languages) do
+        dap.configurations[language] = {
+          {
+            name = "Next.js: debug server-side",
+            type = "pwa-node",
+            request = "attach",
+            port = 9231,
+            skipFiles = { "<node_internals>/**", "node_modules/**" },
+            cwd = "${workspaceFolder}",
+          },
+        }
+      end
     end,
   },
   {
