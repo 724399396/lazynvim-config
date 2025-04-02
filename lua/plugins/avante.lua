@@ -4,14 +4,15 @@ return {
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     opts = {
-      provider = "claude",
-      claude = {
-        endpoint = "https://aihubmix.com",
-        model = "claude-3-7-sonnet-20250219",
-        timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
-        temperature = 0,
-        max_completion_tokens = 4096, -- Increase this to include reasoning tokens (for reasoning models)
-        --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+      provider = "deepseek",
+      vendors = {
+        deepseek = {
+          __inherited_from = "openai",
+          api_key_name = "ARK_API_KEY",
+          endpoint = "https://ark.cn-beijing.volces.com/api/v3",
+          model = "deepseek-v3-250324",
+          max_tokens = 8192,
+        },
       },
       web_search_engine = {
         provider = "tavily", -- tavily, serpapi, searchapi, google or kagi
