@@ -4,14 +4,43 @@ return {
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     opts = {
-      provider = "deepseek",
+      provider = "claude37",
       vendors = {
-        deepseek = {
+        opquasar = {
           __inherited_from = "openai",
-          api_key_name = "ARK_API_KEY",
-          endpoint = "https://ark.cn-beijing.volces.com/api/v3",
-          model = "deepseek-v3-250324",
-          max_tokens = 8192,
+          api_key_name = "OPENROUTER_API_KEY",
+          endpoint = "https://openrouter.ai/api/v1",
+          model = "openrouter/quasar-alpha",
+        },
+        op4o = {
+          __inherited_from = "openai",
+          api_key_name = "OPENROUTER_API_KEY",
+          endpoint = "https://openrouter.ai/api/v1",
+          model = "openai/gpt-4o-mini",
+        },
+        opgemini25 = {
+          __inherited_from = "openai",
+          api_key_name = "OPENROUTER_API_KEY",
+          endpoint = "https://openrouter.ai/api/v1",
+          model = "google/gemini-2.5-pro-exp-03-25:free",
+        },
+        opdeepseekv3 = {
+          __inherited_from = "openai",
+          api_key_name = "OPENROUTER_API_KEY",
+          endpoint = "https://openrouter.ai/api/v1",
+          model = "deepseek/deepseek-chat-v3-0324:free",
+        },
+        opdeepseekr1 = {
+          __inherited_from = "openai",
+          api_key_name = "OPENROUTER_API_KEY",
+          endpoint = "https://openrouter.ai/api/v1",
+          model = "deepseek/deepseek-r1:free",
+        },
+        claude37 = {
+          __inherited_from = "openai",
+          api_key_name = "AIHUBMIX_API_KEY",
+          endpoint = "https://aihubmix.com/v1",
+          model = "anthropic-3-7-sonnet-20250219",
         },
       },
       web_search_engine = {
