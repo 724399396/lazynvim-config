@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     opts = {
-      provider = "claude37",
+      provider = "grok3mini",
       vendors = {
         opquasar = {
           __inherited_from = "openai",
@@ -41,6 +41,18 @@ return {
           api_key_name = "AIHUBMIX_API_KEY",
           endpoint = "https://aihubmix.com/v1",
           model = "anthropic-3-7-sonnet-20250219",
+        },
+        grok3mini = {
+          __inherited_from = "openai",
+          api_key_name = "XAI_API_KEY",
+          endpoint = "https://api.x.ai/v1",
+          model = "grok-3-mini-beta",
+        },
+        grok3minifast = {
+          __inherited_from = "openai",
+          api_key_name = "XAI_API_KEY",
+          endpoint = "https://api.x.ai/v1",
+          model = "grok-3-mini-fast",
         },
       },
       web_search_engine = {
