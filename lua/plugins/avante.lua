@@ -4,13 +4,13 @@ return {
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     opts = {
-      provider = "grok3mini",
+      provider = "opgemini25",
       vendors = {
-        opquasar = {
+        opsonnet = {
           __inherited_from = "openai",
           api_key_name = "OPENROUTER_API_KEY",
           endpoint = "https://openrouter.ai/api/v1",
-          model = "openrouter/quasar-alpha",
+          model = "anthropic/claude-3.7-sonnet",
         },
         op4o = {
           __inherited_from = "openai",
@@ -22,7 +22,7 @@ return {
           __inherited_from = "openai",
           api_key_name = "OPENROUTER_API_KEY",
           endpoint = "https://openrouter.ai/api/v1",
-          model = "google/gemini-2.5-pro-exp-03-25:free",
+          model = "google/gemini-2.5-pro-preview-03-25",
         },
         opdeepseekv3 = {
           __inherited_from = "openai",
