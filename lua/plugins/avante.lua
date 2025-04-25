@@ -4,7 +4,29 @@ return {
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     opts = {
-      provider = "opgemini25",
+      system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub:get_active_servers_prompt()
+      end,
+      -- Using function prevents requiring mcphub before it's loaded
+      custom_tools = function()
+        return {
+          require("mcphub.extensions.avante").mcp_tool(),
+        }
+      end,
+      disabled_tools = {
+        "list_files", -- Built-in file operations
+        "search_files",
+        "read_file",
+        "create_file",
+        "rename_file",
+        "delete_file",
+        "create_dir",
+        "rename_dir",
+        "delete_dir",
+        "bash", -- Built-in terminal access
+      },
+      provider = "opclaude37",
       vendors = {
         opsonnet = {
           __inherited_from = "openai",
@@ -21,7 +43,7 @@ return {
         opgemini25 = {
           __inherited_from = "openai",
           api_key_name = "OPENROUTER_API_KEY",
-          endpoint = "https://openrouter.ai/api/v1",
+
           model = "google/gemini-2.5-pro-preview-03-25",
         },
         opdeepseekv3 = {
@@ -35,6 +57,12 @@ return {
           api_key_name = "OPENROUTER_API_KEY",
           endpoint = "https://openrouter.ai/api/v1",
           model = "deepseek/deepseek-r1:free",
+        },
+        opclaude37 = {
+          __inherited_from = "openai",
+          api_key_name = "OPENROUTER_API_KEY",
+          endpoint = "https://openrouter.ai/api/v1",
+          model = "anthropic/claude-3.7-sonnet",
         },
         claude37 = {
           __inherited_from = "openai",
@@ -54,9 +82,6 @@ return {
           endpoint = "https://api.x.ai/v1",
           model = "grok-3-mini-fast",
         },
-      },
-      web_search_engine = {
-        provider = "tavily", -- tavily, serpapi, searchapi, google or kagi
       },
     },
     keys = {
@@ -101,6 +126,34 @@ return {
           file_types = { "markdown", "Avante" },
         },
         ft = { "markdown", "Avante" },
+      },
+      {
+        "ravitemer/mcphub.nvim",
+        dependencies = {
+          "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+        },
+        keys = {
+          {
+            "<leader>aH",
+            "<cmd>MCPHub<cr>",
+            desc = "MCPHub",
+          },
+        },
+        -- uncomment the following line to load hub lazily
+        --cmd = "MCPHub",  -- lazy load
+        build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+        -- uncomment this if you don't want mcp-hub to be available globally or can't use -g
+        -- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
+        config = function()
+          require("mcphub").setup({
+            auto_approve = true,
+            extensions = {
+              avante = {
+                make_slash_commands = true, -- make /slash commands from MCP server prompts
+              },
+            },
+          })
+        end,
       },
     },
   },
