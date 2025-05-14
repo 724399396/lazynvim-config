@@ -26,69 +26,45 @@ return {
         "delete_dir",
         "bash", -- Built-in terminal access
       },
-      provider = "opclaude37",
+      provider = "gemini",
+      copilot = {
+        model = "claude-3.7-sonnet",
+        endpoint = "https://api.githubcopilot.com",
+        allow_insecure = false,
+        timeout = 10 * 60 * 1000,
+        temperature = 0,
+        max_completion_tokens = 1000000,
+        reasoning_effort = "high",
+      },
+      gemini = {
+        api_key_name = "GEMINI_API_KEY",
+        model = "gemini-2.5-pro-preview-05-06",
+      },
       vendors = {
-        opsonnet = {
+        openrouter = {
           __inherited_from = "openai",
-          api_key_name = "OPENROUTER_API_KEY",
           endpoint = "https://openrouter.ai/api/v1",
-          model = "anthropic/claude-3.7-sonnet",
-        },
-        op4o = {
-          __inherited_from = "openai",
           api_key_name = "OPENROUTER_API_KEY",
-          endpoint = "https://openrouter.ai/api/v1",
           model = "openai/gpt-4o-mini",
         },
-        opgemini25 = {
-          __inherited_from = "openai",
-          api_key_name = "OPENROUTER_API_KEY",
-
-          model = "google/gemini-2.5-pro-preview-03-25",
-        },
-        opdeepseekv3 = {
-          __inherited_from = "openai",
-          api_key_name = "OPENROUTER_API_KEY",
-          endpoint = "https://openrouter.ai/api/v1",
-          model = "deepseek/deepseek-chat-v3-0324:free",
-        },
-        opdeepseekr1 = {
-          __inherited_from = "openai",
-          api_key_name = "OPENROUTER_API_KEY",
-          endpoint = "https://openrouter.ai/api/v1",
-          model = "deepseek/deepseek-r1:free",
-        },
-        opclaude37 = {
-          __inherited_from = "openai",
-          api_key_name = "OPENROUTER_API_KEY",
-          endpoint = "https://openrouter.ai/api/v1",
-          model = "anthropic/claude-3.7-sonnet",
-        },
-        claude37 = {
+        aihubmix = {
           __inherited_from = "openai",
           api_key_name = "AIHUBMIX_API_KEY",
           endpoint = "https://aihubmix.com/v1",
           model = "anthropic-3-7-sonnet-20250219",
         },
-        grok3mini = {
+        grok = {
           __inherited_from = "openai",
           api_key_name = "XAI_API_KEY",
           endpoint = "https://api.x.ai/v1",
-          model = "grok-3-mini-beta",
+          model = "grok-3-beta",
         },
-        grok3minifast = {
-          __inherited_from = "openai",
-          api_key_name = "XAI_API_KEY",
-          endpoint = "https://api.x.ai/v1",
-          model = "grok-3-mini-fast",
+        ["gemini_balance"] = {
+          __inherited_from = "gemini",
+          api_key_name = "GEMINI_API_KEY",
+          endpoint = "http://172.10.1.151:8000/gemini/v1beta/models",
+          model = "gemini-2.5-pro-preview-05-06",
         },
-      },
-    },
-    keys = {
-      {
-        "<leader>aC",
-        "<cmd>AvanteClear<cr>",
-        desc = "Avante Clear",
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -177,5 +153,14 @@ return {
         },
       },
     },
+  },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    optional = true,
+    event = "VeryLazy",
+    opts = function(_, opts)
+      table.insert(opts.sections.lualine_x, require("mcphub.extensions.lualine"))
+    end,
   },
 }
