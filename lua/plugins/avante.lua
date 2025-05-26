@@ -6,17 +6,11 @@ return {
     opts = {
       mode = "agentic",
       provider = "gemini",
-      copilot = {
-        model = "claude-3.7-sonnet",
-        endpoint = "https://api.githubcopilot.com",
-        allow_insecure = false,
-        timeout = 10 * 60 * 1000,
-        temperature = 0,
-        max_completion_tokens = 1000000,
-        reasoning_effort = "high",
+      behavior = {
+        auto_apply_diff_after_generation = true,
       },
       gemini = {
-        model = "gemini-2.0-flash",
+        model = "gemini-2.5-flash-preview-04-17",
       },
       aihubmix = {
         api_key_name = "AIHUBMIX_API_KEY",
@@ -47,24 +41,6 @@ return {
       --- The below dependencies are optional,
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "echasnovski/mini.icons",
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
-      },
       {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
