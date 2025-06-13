@@ -9,14 +9,15 @@ return {
       behavior = {
         auto_apply_diff_after_generation = true,
       },
-      gemini = {
-        model = "gemini-2.5-flash-preview-04-17",
-      },
-      aihubmix = {
-        api_key_name = "AIHUBMIX_API_KEY",
-        model = "llama-3.3-70b-versatile",
-      },
-      vendors = {
+      providers = {
+
+        gemini = {
+          model = "gemini-2.5-pro-preview-06-05",
+        },
+        aihubmix = {
+          api_key_name = "AIHUBMIX_API_KEY",
+          model = "llama-3.3-70b-versatile",
+        },
         openrouter = {
           __inherited_from = "openai",
           endpoint = "https://openrouter.ai/api/v1",
